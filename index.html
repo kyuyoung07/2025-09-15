@@ -10,14 +10,42 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="side-menu" id="mySidenav">
+      <button class="closebtn" onclick="closeNav()">&times;</button>
+      <div class="side-menu-list" id="menu-list">
+        <button>Sport</button>
+        <button>Tech</button>
+        <button>World</button>
+        <button>Finance</button>
+        <button>Politics</button>
+        <button>Business</button>
+        <button>Economics</button>
+        <button>Entertainment</button>
+        <button>Beauty</button>
+        <button>Travel</button>
+        <button>Music</button>
+        <button>Food</button>
+        <button>Science</button>
+        <button>Gaming</button>
+        <button>Energy</button>
+      </div>
+    </div>
     <section class="container">
       <section>
         <div>
-            <i class="fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-bars hamburger-menu icon-button" onclick="openNav()"></i>
+          <i class="fa-solid fa-magnifying-glass icon-button" onclick="openSearchBox()"></i>
+          <span id="input-area">
+            <input type="text" id="search-input" placeholder="search"/>
+            <button class="search-button" onclick="getNewsByKeyword()">Go</button>
+          </span>
         </div>
         <div class="head-line">
           <svg viewBox="0 0 184 25" fill="#000" aria-hidden="true">
@@ -27,37 +55,39 @@
           </svg>
         </div>
         <div class="menus">
-            <button>Sport</button>
-            <button>Tech</button>
-            <button>World</button>
-            <button>Finance</button>
-            <button>Politics</button>
-            <button>Business</button>
-            <button>Economics</button>
-            <button>Entertainment</button>
-            <button>Beauty</button>
-            <button>Travel</button>
-            <button>Music</button>
-            <button>Food</button>
-            <button>Science</button>
-            <button>Gaming</button>
-            <button>Energy</button>
+          <button>Sport</button>
+          <button>Tech</button>
+          <button>World</button>
+          <button>Finance</button>
+          <button>Politics</button>
+          <button>Business</button>
+          <button>Economics</button>
+          <button>Entertainment</button>
+          <button>Beauty</button>
+          <button>Travel</button>
+          <button>Music</button>
+          <button>Food</button>
+          <button>Science</button>
+          <button>Gaming</button>
+          <button>Energy</button>
         </div>
       </section>
-      <section>
+      <section id="news-board">
         <div class="row news">
-            <div class="col-lg-4">
-                <image class="news-img-size" src="https://www.fitpetmall.com/wp-content/uploads/2023/10/shutterstock_1844153299-1024x683-1.png"/>
-            </div>
-            <div class="col-lg-8">
-                <h2>고양이가 세상을 구한다</h2>
-                <p>
-                    고양이를 보면 효능이 여러가지 존재한다. 아무래도 처음은 심신안정이 존재한다. 그냥 고양이 너무 귀여워서 행복하다ㅎㅎ
-                </p>
-                <div>
-                    KBS * 2025-09-15
-                </div>
-            </div>
+          <div class="col-lg-4">
+            <image
+              class="news-img-size"
+              src="https://www.fitpetmall.com/wp-content/uploads/2023/10/shutterstock_1844153299-1024x683-1.png"
+            />
+          </div>
+          <div class="col-lg-8">
+            <h2>고양이가 세상을 구한다</h2>
+            <p>
+              고양이를 보면 효능이 여러가지 존재한다. 아무래도 처음은 심신안정이
+              존재한다. 그냥 고양이 너무 귀여워서 행복하다ㅎㅎ
+            </p>
+            <div>KBS * 2025-09-15</div>
+          </div>
         </div>
       </section>
     </section>
