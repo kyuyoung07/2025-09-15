@@ -68,7 +68,7 @@
 .hamburger-menu{
     display: none;
 }
-.input-area{
+#input-area{
     display: none;
 }
 /*휴대폰 세로 크기*/

@@ -1,13 +1,13 @@
 //75d1a11f74da431c96b8561eff36187a
 //`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
-//`https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr&Size=${PAGE_SIZE}`
+//`https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr&pageSize=${PAGE_SIZE}`
 let newsList = [];
 const API_KEY = `75d1a11f74da431c96b8561eff36187a`;
 const PAGE_SIZE=10;
 //뉴스 띄우는 함수
 const getLatestNews = async () => {
   const url = new URL(
-    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr&Size=${PAGE_SIZE}`
+    `https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr&pageSize=${PAGE_SIZE}`
   );
   const response = await fetch(url);
   const data = await response.json();
@@ -53,7 +53,7 @@ const render = () => {
                 :news.description
               }
             </p>
-            <div>${news.source.name || "no source"} * ${moment(news.publishedAt_date).fromNow()}</div>
+            <div>${news.source.name || "no source"} * ${moment(news.publishedAt).fromNow()}</div>
           </div>
         </div>`
   ).join("");
