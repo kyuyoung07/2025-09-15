@@ -4,6 +4,9 @@
 let newsList = [];
 const API_KEY = `75d1a11f74da431c96b8561eff36187a`;
 const PAGE_SIZE=10;
+const menus=document.querySelectorAll(".menus button");
+menus.forEach((menu)=>menu.addEventListener("click",(event)=>getNewsByCategory(event)));
+
 //뉴스 띄우는 함수
 const getLatestNews = async () => {
   const url = new URL(
@@ -17,6 +20,17 @@ const getLatestNews = async () => {
 };
 
 getLatestNews();
+//카테고리별 뉴스 가져오기
+const getNewsByCategory=async(event)=>{
+  const category=event.target.textContent.toLowerCase();
+  console.log("category",category);
+  const url=new URL(`https://study-website-be-bbb1539aa813.herokuapp.com/top-headlines?country=kr&category=${category}pageSize=${PAGE_SIZE}`);
+  const response=await fetch(url);
+  const data=await response.json();
+  console.log("ddd",data);
+  newsList=data.articles;
+  render();
+};
 //뉴스타임즈html미션
 const openNav = () => {
   document.getElementById("mySidenav").style.width = "250px";
@@ -61,3 +75,7 @@ const render = () => {
 
   document.getElementById("news-board").innerHTML = newsHTML;
 };
+
+//1. 버튼들에 클릭 이벤트 주기
+//2. 카테고리별 뉴스 가져오기
+//3. 그 뉴스를 보여주기
