@@ -71,6 +71,9 @@
 #input-area{
     display: none;
 }
+.alert-danger{
+    text-align: center;
+}
 /*휴대폰 세로 크기*/
 @media (max-width:479px) {
     .hamburger-menu{
