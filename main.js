@@ -137,24 +137,32 @@ const paginationRender = () => {
   const pageGroup = Math.ceil(page / groupSize);
   //lastPage
   let lastPage = pageGroup * groupSize;
-  //마지막 페이지그룹이 그룹사이즈보다 작다? lastPage=totalPage
+  //첫페이지가 5이하일 경우 5개 페이지가 아닌 뭐 3개라면 3개 보여주기. 페이지그룹이 그룹사이즈보다 작다? lastPage=totalPage
   if (lastPage > totalPages) {
     lastPage = totalPages;
   }
-  //firstPage
+  //firstPage, 마지막이 5개로 안떨어지는 경우, 마지막 페이지 숫자에 맞춰서 5개 보여주기
   const firstPage =
     lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
-
-  let paginationHTML = `<li class="page-item" onclick="moveToPage(${page-1})"><a href="#" class="page-link">Previous</a></li>`;
-
+  //버튼
+  let paginationHTML="";
+  if(page>1){
+    paginationHTML += `<li class="page-item" onclick="moveToPage(1)"><a href="#" class="page-link">&lt;&lt;</a></li>
+  <li class="page-item" onclick="moveToPage(${page-1})"><a href="#" class="page-link">&lt;</a></li>`;
+  }
   for (let i = firstPage; i <= lastPage; i++) {
     paginationHTML += `<li class="page-item ${i===page? "active":""}" onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`;
   }
-  paginationHTML+=`<li class="page-item" onclick="moveToPage(${page+1})"><a class="page-link" href="#">Next</a></li>`;
+  if(page<totalPages){
+    paginationHTML+=`<li class="page-item" onclick="moveToPage(${page+1})"><a class="page-link" href="#">&gt;</a></li>
+  <li class="page-item" onclick="moveToPage(${totalPages})"><a class="page-link" href="#">&gt;&gt;</a></li>`;
+  }
   document.querySelector(".pagination").innerHTML = paginationHTML;
 };
-
+//페이지 이동시키는 함수
 const moveToPage = (pageNum) => {
+  if(pageNum<1) pageNum=1;
+  if(pageNum>Math.ceil(totalResults/pageSize)) pageNum=Math.ceil(totalResults/pageSize);
   console.log("moveToPage", pageNum);
   page = pageNum;
   getNews(page);
