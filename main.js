@@ -8,7 +8,13 @@
 let newsList = [];
 const API_KEY = `75d1a11f74da431c96b8561eff36187a`;
 const menus = document.querySelectorAll(".menus button");
+const sideMenuList = document.querySelectorAll(".side-menu-list button");
+//카테고리 클릭 시 함수 연결
 menus.forEach((menu) =>
+  menu.addEventListener("click", (event) => getNewsByCategory(event))
+);
+//사이드 카테고리 클릭 시 함수 연결
+sideMenuList.forEach((menu) =>
   menu.addEventListener("click", (event) => getNewsByCategory(event))
 );
 
@@ -91,7 +97,7 @@ const render = () => {
     .map(
       (news) => `<div class="row news">
           <div class="col-lg-4">
-            <image
+            <img
               class="news-img-size"
               src="${
                 news.urlToImage ||
@@ -147,24 +153,31 @@ const paginationRender = () => {
   const firstPage =
     lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
   //버튼
-  let paginationHTML="";
-  if(page>1){
+  let paginationHTML = "";
+  if (page > 1) {
     paginationHTML += `<li class="page-item" onclick="moveToPage(1)"><a href="#" class="page-link">&lt;&lt;</a></li>
-  <li class="page-item" onclick="moveToPage(${page-1})"><a href="#" class="page-link">&lt;</a></li>`;
+  <li class="page-item" onclick="moveToPage(${
+    page - 1
+  })"><a href="#" class="page-link">&lt;</a></li>`;
   }
   for (let i = firstPage; i <= lastPage; i++) {
-    paginationHTML += `<li class="page-item ${i===page? "active":""}" onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`;
+    paginationHTML += `<li class="page-item ${
+      i === page ? "active" : ""
+    }" onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`;
   }
-  if(page<totalPages){
-    paginationHTML+=`<li class="page-item" onclick="moveToPage(${page+1})"><a class="page-link" href="#">&gt;</a></li>
+  if (page < totalPages) {
+    paginationHTML += `<li class="page-item" onclick="moveToPage(${
+      page + 1
+    })"><a class="page-link" href="#">&gt;</a></li>
   <li class="page-item" onclick="moveToPage(${totalPages})"><a class="page-link" href="#">&gt;&gt;</a></li>`;
   }
   document.querySelector(".pagination").innerHTML = paginationHTML;
 };
 //페이지 이동시키는 함수
 const moveToPage = (pageNum) => {
-  if(pageNum<1) pageNum=1;
-  if(pageNum>Math.ceil(totalResults/pageSize)) pageNum=Math.ceil(totalResults/pageSize);
+  if (pageNum < 1) pageNum = 1;
+  if (pageNum > Math.ceil(totalResults / pageSize))
+    pageNum = Math.ceil(totalResults / pageSize);
   console.log("moveToPage", pageNum);
   page = pageNum;
   getNews(page);

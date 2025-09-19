@@ -87,4 +87,7 @@ ul {
   .hamburger-menu {
     display: inline-block;
   }
+  .menus{
+    display:none;
+  }
 }
