@@ -155,21 +155,21 @@ const paginationRender = () => {
   //버튼
   let paginationHTML = "";
   if (page > 1) {
-    paginationHTML += `<li class="page-item" onclick="moveToPage(1)"><a href="#" class="page-link">&lt;&lt;</a></li>
+    paginationHTML += `<li class="page-item" onclick="moveToPage(1)"><button class="page-link">&lt;&lt;</button></li>
   <li class="page-item" onclick="moveToPage(${
     page - 1
-  })"><a href="#" class="page-link">&lt;</a></li>`;
+  })"><button class="page-link">&lt;</button></li>`;
   }
   for (let i = firstPage; i <= lastPage; i++) {
     paginationHTML += `<li class="page-item ${
       i === page ? "active" : ""
-    }" onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`;
+    }" onclick="moveToPage(${i})"><button class="page-link">${i}</button></li>`;
   }
   if (page < totalPages) {
     paginationHTML += `<li class="page-item" onclick="moveToPage(${
       page + 1
-    })"><a class="page-link" href="#">&gt;</a></li>
-  <li class="page-item" onclick="moveToPage(${totalPages})"><a class="page-link" href="#">&gt;&gt;</a></li>`;
+    })"><button class="page-link">&gt;</button></li>
+  <li class="page-item" onclick="moveToPage(${totalPages})"><button class="page-link">&gt;&gt;</button></li>`;
   }
   document.querySelector(".pagination").innerHTML = paginationHTML;
 };

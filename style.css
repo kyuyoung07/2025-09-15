@@ -82,12 +82,27 @@ ul {
   display: flex;
   justify-content: center;
 }
+.page-link {
+  color: burlywood;
+}
+.page-link:hover{
+  background: burlywood;
+  color: white;
+}
+.page-item.active .page-link {
+    background-color: burlywood;
+    color: white;
+    border-color: burlywood;
+}
+.page-link:focus{
+  cursor: pointer;
+}
 /*휴대폰 세로 크기*/
 @media (max-width: 479px) {
   .hamburger-menu {
     display: inline-block;
   }
-  .menus{
-    display:none;
+  .menus {
+    display: none;
   }
 }
