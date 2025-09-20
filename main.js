@@ -52,6 +52,7 @@ const getNews = async () => {
 };
 //뉴스 띄우는 함수
 const getLatestNews = async () => {
+  page=1; //페이지 초기화
   url = new URL(
     `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&apiKey=${API_KEY}`
   );
@@ -62,6 +63,7 @@ getLatestNews();
 //카테고리별 뉴스 함수
 const getNewsByCategory = async (event) => {
   const category = event.target.textContent.toLowerCase();
+  page=1; //페이지 초기화
   url = new URL(
     `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`
   );
@@ -70,6 +72,7 @@ const getNewsByCategory = async (event) => {
 //키워드별 뉴스
 const getNewsByKeyword = async () => {
   const keyword = document.getElementById("search-input").value;
+  page=1; //페이지 초기화
   url = new URL(
     `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`
   );
